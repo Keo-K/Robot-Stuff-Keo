@@ -11,7 +11,16 @@ void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {}
-void Robot::TeleopPeriodic() {}
+void Robot::TeleopPeriodic() {
+  // motor.Set(ControlMode::PercentOutput, 0.25);
+  bool buttonOnePressed = false;
+  buttonOnePressed  = controller.GetRawButton(1);
+  if (buttonOnePressed) {
+    motor.Set(ControlMode::PercentOutput, 0.25); // tells the motor to move at 1/4 speed, if the button is pressed
+  } else {
+    motor.Set(ControlMode::PercentOutput, 0); // if the button is not pressed, the motor does not move
+  }
+}
 
 void Robot::DisabledInit() {}
 void Robot::DisabledPeriodic() {}

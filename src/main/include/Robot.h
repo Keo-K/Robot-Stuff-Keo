@@ -5,8 +5,13 @@
 #pragma once
 
 #include <frc/TimedRobot.h>
+#include <ctre/Phoenix.h>
+#include <frc/Joystick.h>
+using namespace ctre::phoenix::motorcontrol::can;
 
 class Robot : public frc::TimedRobot {
+  frc::Joystick controller{0};
+  TalonSRX motor{5};
  public:
   void RobotInit() override;
   void RobotPeriodic() override;
