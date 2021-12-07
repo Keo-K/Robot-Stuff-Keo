@@ -13,9 +13,8 @@ void Robot::AutonomousPeriodic() {}
 void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic() {
   // motor.Set(ControlMode::PercentOutput, 0.25);
-  bool buttonOnePressed = false;
-  buttonOnePressed  = controller.GetRawButton(1);
-  bool leftYAxis = controller.GetRawAxis(0); 
+  bool buttonOnePressed = controller.GetRawButton(1);;
+  double leftYAxis = controller.GetRawAxis(0); 
   if ((buttonOnePressed) && (leftYAxis > 0.33)) {
     motor.Set(ControlMode::PercentOutput, 0.25); 
   } else if ((buttonOnePressed) && (leftYAxis < 0.33)) {
