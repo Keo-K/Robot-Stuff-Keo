@@ -20,6 +20,10 @@ void Robot::TeleopPeriodic() {
   } else {
     motor.Set(ControlMode::PercentOutput, 0); // if the button is not pressed, the motor does not move
   }
+  bool leftYAxis = controller.GetRawAxis(0); // reads the control stick input
+  if (leftYAxis > 0.33) {
+    motor.Set(ControlMode::PercentOutput, 0.25);
+  }
 }
 
 void Robot::DisabledInit() {}
