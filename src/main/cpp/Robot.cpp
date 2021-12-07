@@ -15,14 +15,11 @@ void Robot::TeleopPeriodic() {
   // motor.Set(ControlMode::PercentOutput, 0.25);
   bool buttonOnePressed = false;
   buttonOnePressed  = controller.GetRawButton(1);
-  if (buttonOnePressed) {
-    motor.Set(ControlMode::PercentOutput, 0.25); // tells the motor to move at 1/4 speed, if the button is pressed
-  } else {
-    motor.Set(ControlMode::PercentOutput, 0); // if the button is not pressed, the motor does not move
-  }
-  bool leftYAxis = controller.GetRawAxis(0); // reads the control stick input
-  if (leftYAxis > 0.33) {
-    motor.Set(ControlMode::PercentOutput, 0.25);
+  bool leftYAxis = controller.GetRawAxis(0); 
+  if ((buttonOnePressed) && (leftYAxis > 0.33)) {
+    motor.Set(ControlMode::PercentOutput, 0.25); 
+  } else if ((buttonOnePressed) && (leftYAxis > 0.33)) {
+    motor.Set(ControlMode::PercentOutput, -0.25); 
   }
 }
 
